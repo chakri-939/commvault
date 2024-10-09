@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Images</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Uploaded Images</h1>
+    <form method="get">
+        <label>
+            <input type="checkbox" name="show_encrypted" value="yes"> Show only encrypted images.
+        </label>
+        <button type="submit">Filter</button>
+    </form>
+    <ul>
+        {% for image in images %}
+            <li>
+                <a href="/download/{{ image }}">Download Encrypted File</a> |
+                <a href="/decrypt/{{ image }}">Decrypt and Download</a>
+            </li>
+        {% else %}
+            <li>No images found.</li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <a href="/">Upload More Images</a>
+</body>
+</html>
